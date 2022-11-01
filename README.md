@@ -26,6 +26,28 @@ The following preprocessing steps have been performed:
 * The preprocessed data is split into training and testing datasets
 * The numerical values have been standardized using the StandardScaler() module
 
+
+##### 1) What variable(s) are considered the target(s) for your model?
+
+"IS_SUCCESSFUL" was the target varialbe (y) for the model
+
+##### 2) What variable(s) are considered the feature(s) for your model?
+
+The following are all part of the features maxtrix (X)
+1. APPLICATION_TYPE<br>
+2. AFFILIATION<br>
+3. CLASSIFICATION<br>
+4. USE_CASE<br>
+5. ORGANIZATION<br>
+6. STATUS<br> 
+7. INCOME_AMT<br> 
+8. SPECIAL_CONSIDERATIONS<br> 
+9. ASK_AMT<br>
+
+##### 3) What variable(s) are neither targets nor features, and should be removed from the input data?
+
+EIN and NAME were not part of the inital model.
+
 #### Compile, Train, and Evaluate the Model
 
 TensorFlow was used to design a neural network, or deep learning model, to create a binary classification model that can predict if an Alphabet Soup–funded organization will be successful based on the features in the dataset.
@@ -43,13 +65,17 @@ The neural network model developed using Tensorflow Keras contains working code 
 
 ##### 1) How many neurons and layers did you select for your neural network model? Why?
 
-Prior to optimizing model, the model was using 8 and 5 neurons for hidden_nodes_layer1 and hidden_nodes_layer2
-respectively because there were 8 feature columns and so as to not overfit the model.
-There were also 2 hidden layers used, along with the relu activation function.
+The initial model included the following: 
+1. An input layer<br>
+2. First hidden layer (Number of neurons was three times the number of inputs - following a general rule of thumb). Also the inital model used "relu" activation - as a default choice<br>
+3. Second hidden layer (Number of neurons was half the number of inputs - interest in having fewer neurons any additional layers). Also the inital model used "relu" activation - as a default choice<br>
+4. Output layer with a "sigmoid" activation function as this was a binary classifier
 
 ##### 2) Were you able to achieve the target model performance? What steps did you take to try and increase model performance?
 
-Yes, model did achieve the target model performance even after optimizing model. The accurate rate was 77% 
+Yes, the optimized model did achieve the target model performance even after optimizing model. The accurate rate was 77%.
+
+The optimized model included an additional hidden layer (sandwiched between intial model's hidden layer 1 & 2). This additional hidden layer had the same number of neurons as the number of inputs. The optimized model also used "tahn" activation based on the values in X_train_scaled rangeing from -1 to 1.
 
 In order to exceed the benchmark of 75% model accuracy the model was optimized by exploring the following methods:
 
